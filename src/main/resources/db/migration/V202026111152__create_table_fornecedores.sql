@@ -1,0 +1,12 @@
+CREATE TABLE fornecedores (
+  CodigoFor INT NOT NULL AUTO_INCREMENT,
+  NomeFor VARCHAR(100) NOT NULL,
+  EnderecoFor VARCHAR(255) NOT NULL,
+  CodigoCid INT NOT NULL,
+  EmailFor VARCHAR(255) NOT NULL,
+  CNPJFor VARCHAR(18) NOT NULL,
+  TelefoneFor VARCHAR(15) NOT NULL,
+  PRIMARY KEY (CodigoFor),
+  INDEX FK_CodigoCid_idx (CodigoCid) VISIBLE,
+  CONSTRAINT FK_CodigoCidForn FOREIGN KEY (CodigoCid) REFERENCES cidades (codigo_cid) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
