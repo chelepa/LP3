@@ -4,7 +4,7 @@ CREATE TABLE clientes (
   endereco_cli VARCHAR(255) NOT NULL,
   codigo_cid INT NOT NULL,
   email_cli VARCHAR(45) NOT NULL,
-  data_nasc_cli DATE NOT NULL,
+  data_nasc_cli date NOT NULL,
   telefone_cli VARCHAR(15) NOT NULL,
   cpf_cli VARCHAR(14) NOT NULL,
   PRIMARY KEY (codigo_cli),

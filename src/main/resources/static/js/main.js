@@ -4,10 +4,13 @@ $(document).ready(function(){
     var $campo = $("#cep");
     $campo.mask('00000-000', {reverse: true});
     
-	$('#remove').click(function(){
-		var id = $(this).parent().parent().find("td").attr("id")
-		alert(id);
-		console.log(id);
-		return false;
-	});
+    var $campo = $("#CPFCli");
+    $campo.mask('000.000.000-00', {reverse: true});
+    
+    var $campo = $("#DataNCli");
+    $campo.mask('0000-00-00', {reverse: true});
+    
+    $('select').formSelect();
+    
+    $('.datepicker').datepicker({ dateFormat: 'yyyy-mm-dd' });
 });

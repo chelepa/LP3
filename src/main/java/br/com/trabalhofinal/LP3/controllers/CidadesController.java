@@ -38,7 +38,7 @@ public class CidadesController {
 	    ModelAndView mv = new ModelAndView("cidades/EditarCidades");
 		CidadesDTO cidadeModel = service.getCidadeId(Id);
 		model.addAttribute("cidade", cidadeModel);
-	    return mv;
+		return mv;
 	 }
 	
 	@RequestMapping(value="/Cidade/salvarAlteracao", method= RequestMethod.POST)

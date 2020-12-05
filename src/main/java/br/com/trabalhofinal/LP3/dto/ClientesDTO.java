@@ -1,45 +1,26 @@
-package br.com.trabalhofinal.LP3.entities;
+package br.com.trabalhofinal.LP3.dto;
 
 import java.time.LocalDate;
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
-@Table(name = "clientes")
-public class ClientesEntities {
+public class ClientesDTO {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "codigo_cli")
 	private Integer CodigoCli;
 	
-	@Column(name = "nome_cli")
 	private String NomeCli;
 	
-	@Column(name = "endereco_cli")
 	private String EnderecoCli;
 	
-	@Column(name = "codigo_cid")
 	private Integer CodigoCid;
 	
-	@Column(name = "email_cli")
 	private String EmailCli;
 	
-	@Column(name = "data_nasc_cli")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate DataNCli;
 	
-	@Column(name = "telefone_cli")
 	private String TelefoneCli;
 	
-	@Column(name = "cpf_cli")
 	private String CPFCli;
 
 	public Integer getCodigoCli() {

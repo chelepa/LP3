@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Cadastro de Clientes</title>
+	<head th:replace="head :: head"></head>
+</head>
+<body>
+	<header th:replace="menu/Menu :: header"></header>
+	
+
+	<div class="container">
+		<form id="CadCidades" action="/Clientes/Cadastro" method="post">
+			<div class="">
+				<div class="input-field col s6">
+					<input type="text" id="NomeCli" name="NomeCli" class="validate" required	maxlength="100">
+					 <label for="NomeCli" data-error="Preencha o campo Nome Cidade" class="active">Nome Do Cliente</label>
+				</div>
+			</div>
+			<div class="">
+				<div class="input-field col s6">
+					<input type="text" id="EnderecoCli" name="EnderecoCli" class="validate" required	maxlength="255">
+					 <label for="EnderecoCli" data-error="Preencha o campo Endereço" class="active">Endereço</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input type="text" id="EmailCli" name="EmailCli" class="validate" required maxlength="45"> 
+					<label for="EmailCli"	data-error="Preencha o campo Email corretamente" class="active">Email</label>
+				</div>
+				 <div class="input-field col s6">
+				    <select id="CodigoCid" name="CodigoCid" required>
+				      <option th:each = "cidade : ${cidades}" th:value="${cidade.codigo}" th:text="${cidade.nome}"></option>
+				    </select>
+				    <label>Cidades</label>
+				 </div>
+			</div>
+			<div class="row">
+				<div class="input-field col s3">
+					<input type="text" id="TelefoneCli" name="TelefoneCli" class="validate" required	maxlength="15"> 
+					<label for="TelefoneCli" data-error="Preencha o campo Telefone corretamente" class="active">Telefone</label>
+				</div>
+				<div class="input-field col s3">
+					<input type="text" id="CPFCli" name="CPFCli" class="validate" required maxlength="14"> 
+					<label for="CPFCli" data-error="Preencha o campo CPF corretamente" class="active">CPF</label>
+				</div>
+				<div class="input-field col s3">
+					<input type="text" id="DataNCli" name="DataNCli" required maxlength="10">
+					<label for="DataNCli" data-error="Preencha o campo CPF corretamente" class="active">Data de Nascimento</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s3">
+					<button class="waves-effect waves-light btn" type="submit">Salvar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+<div th:replace="footer :: footer"></div>
+</body>
+
+
+</html>

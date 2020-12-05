@@ -1,8 +1,10 @@
-package br.com.trabalhofinal.LP3.dto.clientes;
+package br.com.trabalhofinal.LP3.dto;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
-public class ClientesDTO {
+import org.springframework.format.annotation.DateTimeFormat;
+
+public class ClientesResponse {
 
 	private Integer CodigoCli;
 	
@@ -10,11 +12,12 @@ public class ClientesDTO {
 	
 	private String EnderecoCli;
 	
-	private Integer CodigoCid;
+	private String CodigoCid;
 	
 	private String EmailCli;
 	
-	private Date DataNCli;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate DataNCli;
 	
 	private String TelefoneCli;
 	
@@ -44,11 +47,11 @@ public class ClientesDTO {
 		EnderecoCli = enderecoCli;
 	}
 
-	public Integer getCodigoCid() {
+	public String getCodigoCid() {
 		return CodigoCid;
 	}
 
-	public void setCodigoCid(Integer codigoCid) {
+	public void setCodigoCid(String codigoCid) {
 		CodigoCid = codigoCid;
 	}
 
@@ -60,11 +63,11 @@ public class ClientesDTO {
 		EmailCli = emailCli;
 	}
 
-	public Date getDataNCli() {
+	public LocalDate getDataNCli() {
 		return DataNCli;
 	}
 
-	public void setDataNCli(Date dataNCli) {
+	public void setDataNCli(LocalDate dataNCli) {
 		DataNCli = dataNCli;
 	}
 
