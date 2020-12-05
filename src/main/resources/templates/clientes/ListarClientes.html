@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<head th:replace="head :: head"></head>
+</head>
+<body>
+	<header th:replace="menu/Menu :: header"></header>
+	
+	<div class="container">	
+	<a href="/Cidade/Cadastro">Cadastro de Clientes</a>
+		<table class="striped">
+			<thead>
+				<tr>
+					<th class="mdl-data-table__cell--non-numeric">Codigo</th>
+					<th class="mdl-data-table__cell--non-numeric">Nome Cliente</th>
+					<th class="mdl-data-table__cell--non-numeric">Endereço</th>
+					<th class="mdl-data-table__cell--non-numeric">Cidade</th>
+					<th class="mdl-data-table__cell--non-numeric">Email</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Data de nascimento</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Telefone</th>
+	    			<th class="mdl-data-table__cell--non-numeric">CPF</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Editar</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Excluir</th>
+				</tr>
+			</thead>
+			<tr th:each = "cliente : ${clientes}">
+				<td th:text = ${cliente.CodigoCli}></td>
+				<td th:text = ${cliente.NomeCli}></td>
+				<td th:text = ${cliente.EnderecoCli}></td>
+				<td th:text = ${cliente.CodigoCid}></td>
+				<td th:text = ${cliente.EmailCli}></td>
+				<td th:text = ${cliente.DataNCli}></td>
+				<td th:text = ${cliente.TelefoneCli}></td>
+				<td th:text = ${cliente.CPFCli}></td>
+				<td>
+					<form action="/Clientes/editar" method="get">
+					  <input type="hidden" name="id" th:value="${cliente.CodigoCli}" />					   			
+					  <button type="submit"  class="mdl-chip__action"><i class="material-icons">create</i></button>
+					</form>
+			    </td>
+				<td>
+					<form action="/Clientes/excluir" method="post">					   			 
+					  <input type="hidden" name="id" th:value="${cliente.CodigoCli}" />								 					   			 
+					  <button type="submit"><i class="material-icons">delete</i></button>
+					</form>
+				</td>				
+			</tr>
+		</table>
+	</div>
+	
+	<div th:replace="footer :: footer"></div>
+</body>
+
+
+</html>
