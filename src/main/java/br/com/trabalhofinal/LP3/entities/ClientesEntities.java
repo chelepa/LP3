@@ -14,28 +14,28 @@ public class ClientesEntities {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "CodigoCli")
+	@Column(name = "codigo_cli")
 	private Integer CodigoCli;
 	
-	@Column(name = "NomeCli")
+	@Column(name = "nome_cli")
 	private String NomeCli;
 	
-	@Column(name = "EnderecoCli")
+	@Column(name = "endereco_cli")
 	private String EnderecoCli;
 	
-	@Column(name = "CodigoCid")
+	@Column(name = "codigo_cid")
 	private Integer CodigoCid;
 	
-	@Column(name = "EmailCli")
+	@Column(name = "email_cli")
 	private String EmailCli;
 	
-	@Column(name = "DataNCli")
+	@Column(name = "data_nasc_cli")
 	private Date DataNCli;
 	
-	@Column(name = "TelefoneCli")
+	@Column(name = "telefone_cli")
 	private String TelefoneCli;
 	
-	@Column(name = "CPFCli")
+	@Column(name = "cpf_cli")
 	private String CPFCli;
 
 	public Integer getCodigoCli() {

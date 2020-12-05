@@ -12,19 +12,19 @@ import javax.persistence.Table;
 public class VendaEntities {
 
 	@Id
-	@Column(name = "CodigoVenda")
+	@Column(name = "codigo_venda")
 	private Integer CodigoVenda;
 	
-	@Column(name = "CodigoFunc")
+	@Column(name = "codigo_func")
 	private Integer CodigoFunc;
 	
-	@Column(name = "CodigoCli")
+	@Column(name = "codigo_cli")
 	private Integer CodigoCli;
 
-	@Column(name = "DataVenda")
+	@Column(name = "data_venda")
 	private Date DataVenda;
 	
-	@Column(name = "ValorTotalVenda")
+	@Column(name = "valor_total_venda")
 	private Double ValorTotalVenda;
 
 	public Integer getCodigoVenda() {

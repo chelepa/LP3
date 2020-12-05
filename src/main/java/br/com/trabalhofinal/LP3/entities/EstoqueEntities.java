@@ -12,13 +12,13 @@ public class EstoqueEntities {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "CodigoEst")
+	@Column(name = "codigo_est")
 	private Integer codigo;
 	
-	@Column(name = "CodigoProd")
+	@Column(name = "codigo_prod")
 	private Integer produto;
 	
-	@Column(name = "QuantEst")
+	@Column(name = "quant_est")
 	private Integer quantidade;
 
 	public Integer getCodigo() {

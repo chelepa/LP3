@@ -14,22 +14,22 @@ public class ProdutosEntities {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "CodigoProd")
+	@Column(name = "codigo_prod")
 	private Integer codigo;
 	
-	@Column(name = "NomeProd")
+	@Column(name = "nome_prod")
 	private String nome;
 	
-	@Column(name = "PrecoUnitProd")
+	@Column(name = "preco_unit_prod")
 	private Double PrecoUnitProd;
 
-	@Column(name = "DataFabricProd")
+	@Column(name = "data_fabric_prod")
 	private Date DataFabricProd;
 	
-	@Column(name = "CategoriaProd")
+	@Column(name = "categoria_prod")
 	private String CategoriaProd;
 	
-	@Column(name = "CodigoFor")
+	@Column(name = "codigo_for")
 	private Integer CodigoFor;
 
 	public Integer getCodigo() {

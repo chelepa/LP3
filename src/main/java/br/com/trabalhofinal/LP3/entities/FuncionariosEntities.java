@@ -14,31 +14,31 @@ public class FuncionariosEntities {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "CodigoFunc")
+	@Column(name = "codigo_func")
 	private Integer CodigoFunc;
 	
-	@Column(name = "NomeFunc")
+	@Column(name = "nome_func")
 	private String NomeFunc;
 	
-	@Column(name = "EnderecoFunc")
+	@Column(name = "endereco_func")
 	private String EnderecoFunc;
 	
-	@Column(name = "CodigoCid")
+	@Column(name = "codigo_cid")
 	private Integer CodigoCid;
 	
-	@Column(name = "EmailFunc")
+	@Column(name = "email_func")
 	private String EmailFunc;
 	
-	@Column(name = "DataNFunc")
+	@Column(name = "data_nasc_func")
 	private Date DataNFunc;
 	
-	@Column(name = "TelefoneFunc")
+	@Column(name = "telefone_func")
 	private String TelefoneFunc;
 	
-	@Column(name = "CPFFunc")
+	@Column(name = "cpf_func")
 	private String CPFFunc;
 	
-	@Column(name = "SalarioFunc")
+	@Column(name = "salario_func")
 	private String SalarioFunc;
 
 	public Integer getCodigoFunc() {

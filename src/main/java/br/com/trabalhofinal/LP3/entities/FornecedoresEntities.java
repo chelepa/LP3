@@ -12,25 +12,25 @@ public class FornecedoresEntities {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "CodigoFor")
+	@Column(name = "codigo_for")
 	private Integer CodigoFor;
 	
-	@Column(name = "NomeFor")
+	@Column(name = "nome_for")
 	private String NomeFor;
 	
-	@Column(name = "EnderecoFor")
+	@Column(name = "endereco_for")
 	private String EnderecoFor;
 
-	@Column(name = "CodigoCid")
+	@Column(name = "codigo_cid")
 	private Integer CodigoCid;
 	
-	@Column(name = "EmailFor")
+	@Column(name = "email_for")
 	private String EmailFor;
 	
-	@Column(name = "CNPJFor")
+	@Column(name = "cnpj_for")
 	private String CNPJFor;
 	
-	@Column(name = "TelefoneFor")
+	@Column(name = "telefone_for")
 	private String TelefoneFor;
 
 	public Integer getCodigoFor() {

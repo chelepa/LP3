@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS venda (
-  CodigoVenda INT NOT NULL,
-  CodigoFunc INT NOT NULL,
-  CodigoCli INT NOT NULL,
-  DataVenda DATE NOT NULL,
-  ValorTotalVenda DECIMAL(8,2) NOT NULL,
-  PRIMARY KEY (CodigoVenda)
+  codigo_venda INT NOT NULL,
+  codigo_func INT NOT NULL,
+  codigo_cli INT NOT NULL,
+  data_venda DATE NOT NULL,
+  valor_total_venda DECIMAL(8,2) NOT NULL,
+  PRIMARY KEY (codigo_venda)
 );

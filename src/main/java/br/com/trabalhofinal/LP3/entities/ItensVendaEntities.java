@@ -12,19 +12,19 @@ public class ItensVendaEntities {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "CodigoIV")
+	@Column(name = "codigo_iv")
 	private Integer CodigoIV;
 	
-	@Column(name = "CodigoProd")
+	@Column(name = "codigo_prod")
 	private Integer CodigoProd;
 	
-	@Column(name = "QuantidadeIV")
+	@Column(name = "quantidade_iv")
 	private Integer QuantidadeIV;
 
-	@Column(name = "ValorTotalIV")
+	@Column(name = "valor_total_iv")
 	private Double ValorTotalIV;
 	
-	@Column(name = "CodigoVenda")
+	@Column(name = "codigo_venda")
 	private Integer CodigoVenda;
 
 	public Integer getCodigoIV() {

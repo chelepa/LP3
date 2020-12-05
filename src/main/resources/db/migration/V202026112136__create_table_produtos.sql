@@ -1,14 +1,14 @@
 CREATE TABLE produtos (
-  CodigoProd INT NOT NULL AUTO_INCREMENT,
-  NomeProd VARCHAR(255) NOT NULL,
-  PrecoUnitProd DECIMAL(8,2) NOT NULL,
-  DataFabricProd DATE NOT NULL,
-  CategoriaProd VARCHAR(100) NOT NULL,
-  CodigoFor INT NOT NULL,
-  PRIMARY KEY (CodigoProd),
-  INDEX FK_ProdutosFornecedores_idx (CodigoFor),
+  codigo_prod INT NOT NULL AUTO_INCREMENT,
+  nome_prod VARCHAR(255) NOT NULL,
+  preco_unit_prod DECIMAL(8,2) NOT NULL,
+  data_fabric_prod DATE NOT NULL,
+  categoria_prod VARCHAR(100) NOT NULL,
+  codigo_for INT NOT NULL,
+  PRIMARY KEY (codigo_prod),
+  INDEX FK_ProdutosFornecedores_idx (codigo_for),
   CONSTRAINT FK_ProdutosFornecedores
-    FOREIGN KEY (CodigoFor)
-    REFERENCES fornecedores (CodigoFor)
+    FOREIGN KEY (codigo_for)
+    REFERENCES fornecedores (codigo_for)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);

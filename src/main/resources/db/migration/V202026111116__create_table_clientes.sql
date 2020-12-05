@@ -1,13 +1,13 @@
 CREATE TABLE clientes (
-  CodigoCli INT NOT NULL AUTO_INCREMENT,
-  NomeCli VARCHAR(100) NOT NULL,
-  EnderecoCli VARCHAR(255) NOT NULL,
-  CodigoCid INT NOT NULL,
-  EmailCli VARCHAR(45) NOT NULL,
-  DataNCli DATE NOT NULL,
-  TelefoneCli VARCHAR(15) NOT NULL,
-  CPFCli VARCHAR(14) NOT NULL,
-  PRIMARY KEY (CodigoCli),
-  INDEX FL_CodigoCid_idx (CodigoCid) VISIBLE,
-  CONSTRAINT FK_CodigoCid FOREIGN KEY (CodigoCid) REFERENCES cidades (codigo_cid) ON DELETE NO ACTION ON UPDATE NO ACTION
+  codigo_cli INT NOT NULL AUTO_INCREMENT,
+  nome_cli VARCHAR(100) NOT NULL,
+  endereco_cli VARCHAR(255) NOT NULL,
+  codigo_cid INT NOT NULL,
+  email_cli VARCHAR(45) NOT NULL,
+  data_nasc_cli DATE NOT NULL,
+  telefone_cli VARCHAR(15) NOT NULL,
+  cpf_cli VARCHAR(14) NOT NULL,
+  PRIMARY KEY (codigo_cli),
+  INDEX FL_CodigoCid_idx (codigo_cid) VISIBLE,
+  CONSTRAINT FK_CodigoCid FOREIGN KEY (codigo_cid) REFERENCES cidades (codigo_cid) ON DELETE NO ACTION ON UPDATE NO ACTION
 );

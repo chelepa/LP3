@@ -1,8 +1,8 @@
 CREATE TABLE estoque (
-  CodigoEst INT NOT NULL AUTO_INCREMENT,
-  CodigoProd INT NOT NULL,
-  QuantEst INT NOT NULL,
-  PRIMARY KEY (CodigoEst),
-  INDEX FK_EstoqueProdutos_idx (CodigoProd),
-  CONSTRAINT FK_EstoqueProdutos FOREIGN KEY (CodigoProd) REFERENCES produtos (CodigoProd) ON DELETE NO ACTION ON UPDATE NO ACTION
+  codigo_est INT NOT NULL AUTO_INCREMENT,
+  codigo_prod INT NOT NULL,
+  quant_est INT NOT NULL,
+  PRIMARY KEY (codigo_est),
+  INDEX FK_EstoqueProdutos_idx (codigo_prod),
+  CONSTRAINT FK_EstoqueProdutos FOREIGN KEY (codigo_prod) REFERENCES produtos (codigo_prod) ON DELETE NO ACTION ON UPDATE NO ACTION
  );
