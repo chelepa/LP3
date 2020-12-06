@@ -7,7 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.trabalhofinal.LP3.dto.CidadesDTO;
+import br.com.trabalhofinal.LP3.dto.Cidades.CidadesDTO;
 import br.com.trabalhofinal.LP3.entities.CidadesEntities;
 import br.com.trabalhofinal.LP3.repositories.CidadesRepository;
 

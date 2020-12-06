@@ -12,9 +12,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.trabalhofinal.LP3.dto.CidadesDTO;
-import br.com.trabalhofinal.LP3.dto.ClientesDTO;
-import br.com.trabalhofinal.LP3.dto.ClientesResponse;
+import br.com.trabalhofinal.LP3.dto.Cidades.CidadesDTO;
+import br.com.trabalhofinal.LP3.dto.Clientes.ClientesDTO;
+import br.com.trabalhofinal.LP3.dto.Clientes.ClientesResponse;
 import br.com.trabalhofinal.LP3.entities.CidadesEntities;
 import br.com.trabalhofinal.LP3.entities.ClientesEntities;
 import br.com.trabalhofinal.LP3.repositories.ClientesRepository;
@@ -74,8 +74,8 @@ public class ClientesService {
 	
 	public List<ClientesResponse> populateCidade(List<ClientesEntities> list) {
 		List<ClientesResponse> listresponse = new ArrayList<>();
-		ClientesResponse cliente = new ClientesResponse();
 		for (ClientesEntities clientesEntities : list) {
+			ClientesResponse cliente = new ClientesResponse();
 			cliente.setCodigoCid(nomeCidade(clientesEntities.getCodigoCid()));
 			cliente.setCodigoCli(clientesEntities.getCodigoCli());
 			cliente.setCPFCli(clientesEntities.getCPFCli());

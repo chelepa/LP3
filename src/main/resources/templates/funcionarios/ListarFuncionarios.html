@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Funcionarios</title>
+	<head th:replace="head :: head"></head>
+</head>
+<body>
+	<header th:replace="menu/Menu :: header"></header>
+	
+	<div class="container">	
+	<a href="/Funcionarios/Cadastro">Cadastro de funcionarios</a>
+		<table class="striped">
+			<thead>
+				<tr>
+					<th class="mdl-data-table__cell--non-numeric">Codigo</th>
+					<th class="mdl-data-table__cell--non-numeric">Nome Funcionario</th>
+					<th class="mdl-data-table__cell--non-numeric">Endereço</th>
+					<th class="mdl-data-table__cell--non-numeric">Cidade</th>
+					<th class="mdl-data-table__cell--non-numeric">Email</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Data de nascimento</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Telefone</th>
+	    			<th class="mdl-data-table__cell--non-numeric">CPF</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Salario</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Editar</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Excluir</th>
+				</tr>
+			</thead>
+			<tr th:each = "funcionario : ${funcionarios}">
+				<td th:text = ${funcionario.CodigoFunc}></td>
+				<td th:text = ${funcionario.NomeFunc}></td>
+				<td th:text = ${funcionario.EnderecoFunc}></td>
+				<td th:text = ${funcionario.CodigoCid}></td>
+				<td th:text = ${funcionario.EmailFunc}></td>
+				<td th:text = ${funcionario.DataNFunc}></td>
+				<td th:text = ${funcionario.TelefoneFunc}></td>
+				<td th:text = ${funcionario.CPFFunc}></td>
+				<td th:text = ${funcionario.SalarioFunc}></td>
+				<td>
+					<form action="/Funcionarios/editar" method="get">
+					  <input type="hidden" name="id" th:value="${funcionario.CodigoFunc}" />					   			
+					  <button type="submit"  class="mdl-chip__action"><i class="material-icons">create</i></button>
+					</form>
+			    </td>
+				<td>
+					<form action="/Funcionarios/excluir" method="post">					   			 
+					  <input type="hidden" name="id" th:value="${funcionario.CodigoFunc}" />								 					   			 
+					  <button type="submit"><i class="material-icons">delete</i></button>
+					</form>
+				</td>				
+			</tr>
+		</table>
+	</div>
+	
+	<div th:replace="footer :: footer"></div>
+</body>
+
+
+</html>

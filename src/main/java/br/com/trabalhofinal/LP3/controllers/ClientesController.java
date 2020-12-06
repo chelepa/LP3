@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.trabalhofinal.LP3.dto.CidadesDTO;
-import br.com.trabalhofinal.LP3.dto.ClientesDTO;
-import br.com.trabalhofinal.LP3.dto.ClientesResponse;
+import br.com.trabalhofinal.LP3.dto.Cidades.CidadesDTO;
+import br.com.trabalhofinal.LP3.dto.Clientes.ClientesDTO;
+import br.com.trabalhofinal.LP3.dto.Clientes.ClientesResponse;
 import br.com.trabalhofinal.LP3.entities.CidadesEntities;
 import br.com.trabalhofinal.LP3.services.CidadesService;
 import br.com.trabalhofinal.LP3.services.ClientesService;

@@ -1,4 +1,4 @@
-package br.com.trabalhofinal.LP3.dto;
+package br.com.trabalhofinal.LP3.dto.Cidades;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

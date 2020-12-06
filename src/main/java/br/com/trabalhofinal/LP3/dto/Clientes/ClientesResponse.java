@@ -1,4 +1,4 @@
-package br.com.trabalhofinal.LP3.dto;
+package br.com.trabalhofinal.LP3.dto.Clientes;
 
 import java.time.LocalDate;
 
