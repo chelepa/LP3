@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.trabalhofinal.LP3.dto.Estoque.EstoqueDTO;
 import br.com.trabalhofinal.LP3.dto.Fornecedores.FornecedoresDTO;
 import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosDTO;
 import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosResponseDTO;
@@ -22,6 +23,9 @@ public class ProdutosService {
 	
 	@Autowired
 	private ModelMapper modelMapper;
+	
+	@Autowired
+	private EstoqueService estoqueService;
 	
 	@Autowired FornecedoresService fornecedor;
 	
@@ -54,9 +58,11 @@ public class ProdutosService {
 		
 		ProdutosDTO response = modelMapper.map(entities, ProdutosDTO.class);
 		
+		criarEstoqueproduto(response);
+		
 		return response;
 	}
-	
+
 	public ProdutosDTO atualizar(ProdutosDTO produtos) {
 		
 		ProdutosEntities entities = modelMapper.map(produtos, ProdutosEntities.class);
@@ -66,6 +72,13 @@ public class ProdutosService {
 		ProdutosDTO response = modelMapper.map(entities, ProdutosDTO.class);
 		
 		return response;
+	}
+	
+	private void criarEstoqueproduto(ProdutosDTO request) {
+		EstoqueDTO response = new EstoqueDTO();
+		response.setProduto(request.getCodigo());
+		response.setQuantidade(0);
+		estoqueService.create(response);
 	}
 
 	private List<ProdutosResponseDTO> populateFornecedor(List<ProdutosEntities> list) {

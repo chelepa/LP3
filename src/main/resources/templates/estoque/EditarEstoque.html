@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Edição de Clientes</title>
+	<head th:replace="head :: head"></head>
+</head>
+<body>
+	<header th:replace="menu/Menu :: header"></header>
+	
+
+	<div class="container">
+		<form id="CadCidades" action="/Estoque/editar" th:object="${estoque}" method="post">
+			<div class="">
+				<div class="input-field col s6">
+	            	<input type="text" id="codigo" name="codigo" th:field="*{codigo}" readonly="readonly"/>
+		    		<label for="codigo">Código</label>	
+				</div>
+			</div>
+			<div class="">
+				<div class="input-field col s6">
+	            	<input type="text" id="codigo" name="codigo" th:field="${produtos.nome}" disabled="disabled"/>
+	            	<input type="hidden" id="produto" name="produto" th:field="*{produto}"/>
+		    		<label for="codigo">Código</label>	
+				</div>
+			</div>
+			<div class="">
+				<div class="input-field col s6">
+					<input type="number" id="quantidade" name="quantidade" class="validate" th:field="*{quantidade}" required maxlength="255">
+					 <label for="quantidade" data-error="Preencha o campo quantidade" class="active">Quantidade</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s3">
+					<button class="waves-effect waves-light btn" type="submit">Salvar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+<div th:replace="footer :: footer"></div>
+</body>
+
+
+</html>

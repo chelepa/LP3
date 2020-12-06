@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Clientes</title>
+	<head th:replace="head :: head"></head>
+</head>
+<body>
+	<header th:replace="menu/Menu :: header"></header>
+	
+	<div class="container">
+		<table class="striped">
+			<thead>
+				<tr>
+					<th class="mdl-data-table__cell--non-numeric">Codigo</th>
+					<th class="mdl-data-table__cell--non-numeric">Produto</th>
+					<th class="mdl-data-table__cell--non-numeric">Quantidade</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Editar</th>
+				</tr>
+			</thead>
+			<tr th:each = "estoque : ${estoques}">
+				<td th:text = ${estoque.codigo}></td>
+				<td th:text = ${estoque.produto}></td>
+				<td th:text = ${estoque.quantidade}></td>
+				<td>
+					<form action="/Estoque/editar" method="get">
+					  <input type="hidden" name="id" th:value="${estoque.codigo}" />					   			
+					  <button type="submit"  class="mdl-chip__action"><i class="material-icons">create</i></button>
+					</form>
+			    </td>				
+			</tr>
+		</table>
+	</div>
+	
+	<div th:replace="footer :: footer"></div>
+</body>
+
+
+</html>
