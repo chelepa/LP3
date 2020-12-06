@@ -1,6 +1,11 @@
 package br.com.trabalhofinal.LP3.dto.Produtos;
 
+import java.time.LocalDate;
 import java.util.Date;
+
+import javax.validation.constraints.DecimalMin;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class ProdutosDTO {
 	
@@ -8,9 +13,11 @@ public class ProdutosDTO {
 	
 	private String nome;
 	
+	@DecimalMin("0.0")
 	private Double PrecoUnitProd;
 
-	private Date DataFabricProd;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate DataFabricProd;
 	
 	private String CategoriaProd;
 	
@@ -40,11 +47,11 @@ public class ProdutosDTO {
 		PrecoUnitProd = precoUnitProd;
 	}
 
-	public Date getDataFabricProd() {
+	public LocalDate getDataFabricProd() {
 		return DataFabricProd;
 	}
 
-	public void setDataFabricProd(Date dataFabricProd) {
+	public void setDataFabricProd(LocalDate dataFabricProd) {
 		DataFabricProd = dataFabricProd;
 	}
 

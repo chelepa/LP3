@@ -1,12 +1,15 @@
 package br.com.trabalhofinal.LP3.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "produtos")
@@ -24,7 +27,8 @@ public class ProdutosEntities {
 	private Double PrecoUnitProd;
 
 	@Column(name = "data_fabric_prod")
-	private Date DataFabricProd;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate DataFabricProd;
 	
 	@Column(name = "categoria_prod")
 	private String CategoriaProd;
@@ -56,11 +60,11 @@ public class ProdutosEntities {
 		PrecoUnitProd = precoUnitProd;
 	}
 
-	public Date getDataFabricProd() {
+	public LocalDate getDataFabricProd() {
 		return DataFabricProd;
 	}
 
-	public void setDataFabricProd(Date dataFabricProd) {
+	public void setDataFabricProd(LocalDate dataFabricProd) {
 		DataFabricProd = dataFabricProd;
 	}
 

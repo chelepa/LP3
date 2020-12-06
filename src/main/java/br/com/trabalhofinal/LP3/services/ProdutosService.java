@@ -77,10 +77,10 @@ public class ProdutosService {
 			dto.setCodigoFor(populateNomeFornecedor(entities.getCodigoFor()));
 			dto.setDataFabricProd(entities.getDataFabricProd());
 			dto.setNome(entities.getNome());
-			dto.setPrecoUnitProd(entities.getPrecoUnitProd());
+			dto.setPrecoUnitProd("R$: "+ entities.getPrecoUnitProd());
 			listresponse.add(dto);
 		}
-		return null;
+		return listresponse;
 	}
 
 	private String populateNomeFornecedor(Integer codigoFor) {

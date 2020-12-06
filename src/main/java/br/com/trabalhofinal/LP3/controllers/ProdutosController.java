@@ -37,7 +37,7 @@ public class ProdutosController {
     public ModelAndView getAllProdutos(){
         ModelAndView mv = new ModelAndView("produtos/ListarProdutos");
         List<ProdutosResponseDTO>  listprodutos = service.getAllProdutos();
-        mv.addObject("protutos", listprodutos);
+        mv.addObject("produtos", listprodutos);
         return mv;
     }
     
@@ -56,6 +56,7 @@ public class ProdutosController {
 			for (ObjectError error : result.getAllErrors()) {
 				msg.add(error.getDefaultMessage());
 			}
+			System.out.println(msg);
 			attributes.addFlashAttribute("mensagem", msg);
 			return "redirect:/Produtos/Cadastro";
 		}
@@ -72,7 +73,7 @@ public class ProdutosController {
     
 	@RequestMapping(value="/Produtos/editar", method= RequestMethod.GET)
 	public ModelAndView editarCadastro(@RequestParam("id") Integer Id, Model model) {	
-	    ModelAndView mv = new ModelAndView("Clientes/EditarClientes");
+	    ModelAndView mv = new ModelAndView("produtos/EditarProdutos");
 	    ProdutosDTO produtos = service.getProdutosbyId(Id);
 	    model.addAttribute("produtos", produtos);
 		List<FornecedoresResponseDTO> listFornecedores = fornecedoresService.getAllFornecedores();

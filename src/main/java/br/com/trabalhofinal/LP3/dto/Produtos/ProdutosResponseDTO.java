@@ -1,5 +1,6 @@
 package br.com.trabalhofinal.LP3.dto.Produtos;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ProdutosResponseDTO {
@@ -8,9 +9,9 @@ public class ProdutosResponseDTO {
 	
 	private String nome;
 	
-	private Double PrecoUnitProd;
+	private String PrecoUnitProd;
 
-	private Date DataFabricProd;
+	private LocalDate DataFabricProd;
 	
 	private String CategoriaProd;
 	
@@ -32,20 +33,20 @@ public class ProdutosResponseDTO {
 		this.nome = nome;
 	}
 
-	public Double getPrecoUnitProd() {
+	public String getPrecoUnitProd() {
 		return PrecoUnitProd;
 	}
 
-	public void setPrecoUnitProd(Double precoUnitProd) {
+	public void setPrecoUnitProd(String precoUnitProd) {
 		PrecoUnitProd = precoUnitProd;
 	}
 
-	public Date getDataFabricProd() {
+	public LocalDate getDataFabricProd() {
 		return DataFabricProd;
 	}
 
-	public void setDataFabricProd(Date dataFabricProd) {
-		DataFabricProd = dataFabricProd;
+	public void setDataFabricProd(LocalDate localDate) {
+		DataFabricProd = localDate;
 	}
 
 	public String getCategoriaProd() {

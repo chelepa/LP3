@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Editar de Produtos</title>
+	<head th:replace="head :: head"></head>
+</head>
+<body>
+	<header th:replace="menu/Menu :: header"></header>
+	
+
+	<div class="container">
+		<form id="CadCidades" action="/Produtos/editar" th:object="${produtos}"method="post">
+			<div class="">
+				<div class="input-field col s6">
+	            	<input type="text" id="codigo" name="codigo" th:field="*{Codigo}" readonly="readonly"/>
+		    		<label for="codigo">Código do funcionario</label>	
+				</div>
+			</div>
+			<div class="">
+				<div class="input-field col s6">
+					<input type="text" id="nome" name="nome" class="validate" th:field="*{nome}" required maxlength="100">
+					 <label for="nome" data-error="Preencha o campo Nome Cidade" class="active">Nome Do Produto</label>
+				</div>
+			</div>
+			<div class="">
+				<div class="input-field col s6">
+					<input type="text" id="PrecoUnitProd" name="PrecoUnitProd" data-thousands="." data-decimal="." th:field="*{PrecoUnitProd}" class="validate" required maxlength="255">
+					 <label for="PrecoUnitProd" data-error="Preencha o campo Preço corretamente" class="active">Preco Unitario</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input type="text" id="CategoriaProd" name="CategoriaProd" class="validate" th:field="*{CategoriaProd}" required maxlength="45"> 
+					<label for="CategoriaProd"	data-error="Preencha o campo Email corretamente" class="active">Categoria</label>
+				</div>
+				 <div class="input-field col s6">
+				    <select id="CodigoFor" name="CodigoFor" required>
+				      <option th:each = "fornecedores : ${fornecedores}" th:selected="*{CodigoFor}==${fornecedores.CodigoFor}" th:value="${fornecedores.CodigoFor}" th:text="${fornecedores.NomeFor}"></option>
+				    </select>
+				    <label>Fornecedores</label>
+				 </div>
+			</div>
+			<div class="row">
+				<div class="input-field col s3">
+					<input type="text" id="DataFabricProd" name="DataFabricProd" th:field="*{DataFabricProd}" required maxlength="10">
+					<label for="DataFabricProd" data-error="Preencha o campo CPF corretamente" class="active">Data de Fabricação</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s3">
+					<button class="waves-effect waves-light btn" type="submit">Salvar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+<div th:replace="footer :: footer"></div>
+</body>
+
+
+</html>
