@@ -16,6 +16,8 @@ $(document).ready(function(){
     var $campo = $("#DataNFunc");
     $campo.mask('0000-00-00', {reverse: true});
     
+    $("#CNPJFor").mask("99.999.999/9999-99");
+    
     $("#SalarioFunc").maskMoney();
     
     $('select').formSelect();
