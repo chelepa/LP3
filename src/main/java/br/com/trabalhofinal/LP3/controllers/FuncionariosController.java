@@ -81,4 +81,18 @@ public class FuncionariosController {
 		mv.addObject("cidade", listCidades);
 		return mv;
 	 }
+	
+	@RequestMapping(value="/Funcionarios/editar", method= RequestMethod.POST)
+	public String salvarAlteracao(@Valid FuncionariosDTO funcionarios, BindingResult result, RedirectAttributes attributes) {
+		if(result.hasErrors()){
+			List<String> msg = new ArrayList<>();
+			for (ObjectError error : result.getAllErrors()) {
+				msg.add(error.getDefaultMessage());
+			}
+			attributes.addFlashAttribute("mensagem", msg);
+			return "redirect:/Funcionarios/editar";
+		}
+		service.atualizar(funcionarios);
+		return "redirect:/Funcionarios";
+	}
 }
