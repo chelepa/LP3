@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Funcionarios</title>
+	<head th:replace="head :: head"></head>
+</head>
+<body>
+	<header th:replace="menu/Menu :: header"></header>
+	
+	<div class="container">	
+	<a href="/Produtos/Cadastro">Cadastro de Produtos</a>
+		<table class="striped">
+			<thead>
+				<tr>
+					<th class="mdl-data-table__cell--non-numeric">Codigo</th>
+					<th class="mdl-data-table__cell--non-numeric">Nome</th>
+					<th class="mdl-data-table__cell--non-numeric">Preco Unitario</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Data de Fabricação</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Categoria</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Fornecedor</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Editar</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Excluir</th>
+				</tr>
+			</thead>
+			<tr th:each = "protuto : ${protutos}">
+				<td th:text = ${protuto.codigo}></td>
+				<td th:text = ${protuto.nome}></td>
+				<td th:text = ${protuto.PrecoUnitProd}></td>
+				<td th:text = ${protuto.DataFabricProd}></td>
+				<td th:text = ${protuto.CategoriaProd}></td>
+				<td th:text = ${protuto.CodigoFor}></td>
+				<td>
+					<form action="/Produtos/editar" method="get">
+					  <input type="hidden" name="id" th:value="${protuto.codigo}" />					   			
+					  <button type="submit"  class="mdl-chip__action"><i class="material-icons">create</i></button>
+					</form>
+			    </td>
+				<td>
+					<form action="/Produtos/excluir" method="post">					   			 
+					  <input type="hidden" name="id" th:value="${protuto.codigo}" />								 					   			 
+					  <button type="submit"><i class="material-icons">delete</i></button>
+					</form>
+				</td>				
+			</tr>
+		</table>
+	</div>
+	
+	<div th:replace="footer :: footer"></div>
+</body>
+
+
+</html>
