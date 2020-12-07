@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Adicionar Produtos ao carrinho</title>
+		<head th:replace="head :: head"></head>
+	</head>
+	<body>
+		<header th:replace="menu/Menu :: header"></header>
+		
+<!-- 		<div class="container"> -->
+<!-- 			<form id="CadCard" action="/Vendas/Card" method="post"> -->
+<!-- 				<div class="row"> -->
+<!-- 					 <div class="input-field col s3"> -->
+<!-- 						<select id="idProduto" name="idProduto" required> -->
+<!-- 							<option th:each="produto : ${produtos}" th:value="${produto.codigo}"th:text="${produto.nome}"></option> -->
+<!-- 						</select>  -->
+<!-- 						<label>Produtos</label> -->
+<!-- 					 </div> -->
+<!-- 					<div class="input-field col s3"> -->
+<!-- 						<input type="number" id="quantidade" name="quantidade" class="validate" required maxlength="255">  -->
+<!-- 						<label for="quantidade" data-error="Preencha o campo quantidade" class="active">Quantidade</label> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<button class="waves-effect waves-light btn" type="submit">Salvar</button> -->
+<!-- 			</form> -->
+<!-- 		</div> -->
+		
+		<div th:replace="footer :: footer"></div>
+	</body>
+</html>
