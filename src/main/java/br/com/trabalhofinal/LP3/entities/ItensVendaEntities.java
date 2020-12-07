@@ -25,7 +25,15 @@ public class ItensVendaEntities {
 	private Double ValorTotalIV;
 	
 	@Column(name = "codigo_venda")
-	private Integer CodigoVenda;
+	private Integer codigoVenda;
+
+	public Integer getCodigoVenda() {
+		return codigoVenda;
+	}
+
+	public void setCodigoVenda(Integer codigoVenda) {
+		this.codigoVenda = codigoVenda;
+	}
 
 	public Integer getCodigoIV() {
 		return CodigoIV;
@@ -57,14 +65,6 @@ public class ItensVendaEntities {
 
 	public void setValorTotalIV(Double valorTotalIV) {
 		ValorTotalIV = valorTotalIV;
-	}
-
-	public Integer getCodigoVenda() {
-		return CodigoVenda;
-	}
-
-	public void setCodigoVenda(Integer codigoVenda) {
-		CodigoVenda = codigoVenda;
 	}
 	
 }

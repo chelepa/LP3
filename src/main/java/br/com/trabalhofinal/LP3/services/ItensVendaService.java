@@ -39,9 +39,18 @@ public class ItensVendaService {
 			itensVenda.setValorTotalIV(cardResponseDTO.getPreco());
 			
 			ItensVendaEntities entities = modelMapper.map(itensVenda, ItensVendaEntities.class);
-			
 			repository.save(entities);
-			
+		}
+	}
+	
+	public List<ItensVendaEntities> getItensFromOrder(Integer Id) {
+		return repository.findByCodigoVenda(Id);
+	}
+	
+	public void deleteitensProductid(Integer Id) {
+		List<ItensVendaEntities> list = getItensFromOrder(Id);
+		for (ItensVendaEntities itensVendaEntities : list) {
+			repository.deleteById(itensVendaEntities.getCodigoIV());
 		}
 	}
 	

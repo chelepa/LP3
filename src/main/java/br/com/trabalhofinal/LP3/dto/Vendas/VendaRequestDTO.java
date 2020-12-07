@@ -5,7 +5,9 @@ import javax.validation.constraints.DecimalMin;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class VendaDTO {
+public class VendaRequestDTO {
+	
+	private Integer CodigoVenda;
 	
 	private Integer CodigoFunc;
 	
@@ -47,5 +49,13 @@ public class VendaDTO {
 
 	public void setValorTotalVenda(Double valorTotalVenda) {
 		ValorTotalVenda = valorTotalVenda;
+	}
+	
+	public Integer getCodigoVenda() {
+		return CodigoVenda;
+	}
+
+	public void setCodigoVenda(Integer codigoVenda) {
+		CodigoVenda = codigoVenda;
 	}
 }

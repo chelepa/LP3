@@ -25,6 +25,7 @@ import br.com.trabalhofinal.LP3.dto.ItensVenda.CardItensResponse;
 import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosDTO;
 import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosResponseDTO;
 import br.com.trabalhofinal.LP3.dto.Vendas.VendaDTO;
+import br.com.trabalhofinal.LP3.dto.Vendas.VendaRequestDTO;
 import br.com.trabalhofinal.LP3.dto.Vendas.VendaResponseDTO;
 import br.com.trabalhofinal.LP3.entities.VendaEntities;
 import br.com.trabalhofinal.LP3.services.ClientesService;
@@ -74,13 +75,12 @@ public class VendasController {
 	}
 	
 	@PostMapping(value="/Vendas/Cadastro")
-	public String form(@Valid VendaDTO card, BindingResult result, RedirectAttributes attributes) throws ParseException{		
+	public String form(@Valid VendaRequestDTO card, BindingResult result, RedirectAttributes attributes) throws ParseException{		
 		if(result.hasErrors()){
 			List<String> msg = new ArrayList<>();
 			for (ObjectError error : result.getAllErrors()) {
 				msg.add(error.getDefaultMessage());
 			}
-			System.out.println(msg);
 			attributes.addFlashAttribute("mensagem", msg);
 			return "redirect:/Vendas/Cadastro";
 		}
@@ -91,31 +91,31 @@ public class VendasController {
     @RequestMapping(value="/Vendas/excluir", method= RequestMethod.POST)
     public ModelAndView excluir(@RequestParam("id") Integer id){
     	ModelAndView modelAndView = new ModelAndView("redirect:/Vendas");
-//		service.deletarProdutos(id);
+		service.deleteVendas(id);
 		return modelAndView;
     }
     
-	@RequestMapping(value="/Vendas/editar", method= RequestMethod.GET)
-	public ModelAndView editarCadastro(@RequestParam("id") Integer Id, Model model) {	
-	    ModelAndView mv = new ModelAndView("Venda/EditarVenda");
-//	    ProdutosDTO produtos = service.getProdutosbyId(Id);
-//	    model.addAttribute("produtos", produtos);
-//		List<FornecedoresResponseDTO> listFornecedores = fornecedoresService.getAllFornecedores();
-//		mv.addObject("fornecedores", listFornecedores);
-		return mv;
-	 }
-	
-	@RequestMapping(value="/Vendas/editar", method= RequestMethod.POST)
-	public String salvarAlteracao(@Valid ProdutosDTO produtos, BindingResult result, RedirectAttributes attributes) {
-		if(result.hasErrors()){
-			List<String> msg = new ArrayList<>();
-			for (ObjectError error : result.getAllErrors()) {
-				msg.add(error.getDefaultMessage());
-			}
-			attributes.addFlashAttribute("mensagem", msg);
-			return "redirect:/Venda/EditarVenda";
-		}
-//		service.atualizar(produtos);
-		return "redirect:/Vendas";
-	}
+//	@RequestMapping(value="/Vendas/editar", method= RequestMethod.GET)
+//	public ModelAndView editarCadastro(@RequestParam("id") Integer Id, Model model) {	
+//	    ModelAndView mv = new ModelAndView("Venda/EditarVenda");
+////	    ProdutosDTO produtos = service.getProdutosbyId(Id);
+////	    model.addAttribute("produtos", produtos);
+////		List<FornecedoresResponseDTO> listFornecedores = fornecedoresService.getAllFornecedores();
+////		mv.addObject("fornecedores", listFornecedores);
+//		return mv;
+//	 }
+//	
+//	@RequestMapping(value="/Vendas/editar", method= RequestMethod.POST)
+//	public String salvarAlteracao(@Valid ProdutosDTO produtos, BindingResult result, RedirectAttributes attributes) {
+//		if(result.hasErrors()){
+//			List<String> msg = new ArrayList<>();
+//			for (ObjectError error : result.getAllErrors()) {
+//				msg.add(error.getDefaultMessage());
+//			}
+//			attributes.addFlashAttribute("mensagem", msg);
+//			return "redirect:/Venda/EditarVenda";
+//		}
+////		service.atualizar(produtos);
+//		return "redirect:/Vendas";
+//	}
 }

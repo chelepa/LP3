@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.trabalhofinal.LP3.dto.Vendas.VendaDTO;
+import br.com.trabalhofinal.LP3.dto.Vendas.VendaRequestDTO;
 import br.com.trabalhofinal.LP3.dto.Vendas.VendaResponseDTO;
 import br.com.trabalhofinal.LP3.entities.VendaEntities;
 import br.com.trabalhofinal.LP3.repositories.VendaRepository;
@@ -30,15 +31,15 @@ public class VendaService {
 	@Autowired
 	private ClientesService cliService;
 	
-	public VendaDTO create(VendaDTO card) {
+	public VendaRequestDTO create(VendaRequestDTO card) {
 		
 		VendaEntities entities = modelMapper.map(card, VendaEntities.class);
 		
 		VendaEntities responseEntities = repository.save(entities);
 		
-		VendaDTO response = modelMapper.map(responseEntities, VendaDTO.class);
+		VendaRequestDTO response = modelMapper.map(responseEntities, VendaRequestDTO.class);
 		
-		ItensService.createItensVenda(response.getCodigoVenda());
+		ItensService.createItensVenda(responseEntities.getCodigoVenda());
 		
 		return response;
 	}
@@ -50,6 +51,11 @@ public class VendaService {
 		List<VendaResponseDTO> response = populateNomesClientesFornecedores(responseEntities);
 		
 		return response;
+	}
+	
+	public void deleteVendas(Integer Id) {
+		ItensService.deleteitensProductid(Id);
+		repository.deleteById(Id);
 	}
 
 	private List<VendaResponseDTO> populateNomesClientesFornecedores(List<VendaEntities> responseEntities) {

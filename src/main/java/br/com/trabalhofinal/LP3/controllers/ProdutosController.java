@@ -56,7 +56,6 @@ public class ProdutosController {
 			for (ObjectError error : result.getAllErrors()) {
 				msg.add(error.getDefaultMessage());
 			}
-			System.out.println(msg);
 			attributes.addFlashAttribute("mensagem", msg);
 			return "redirect:/Produtos/Cadastro";
 		}

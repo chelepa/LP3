@@ -9,7 +9,7 @@
 	<header th:replace="menu/Menu :: header"></header>
 	
 	<div class="container">	
-	<a href="/Produtos/Cadastro">Cadastrar Nova Venda</a>
+	<a href="/Vendas/Cadastro">Cadastrar Nova Venda</a>
 		<table class="striped">
 			<thead>
 				<tr>
@@ -18,7 +18,7 @@
 					<th class="mdl-data-table__cell--non-numeric">Cliente</th>
 	    			<th class="mdl-data-table__cell--non-numeric">Data da Venda</th>
 	    			<th class="mdl-data-table__cell--non-numeric">Valor da Order</th>
-	    			<th class="mdl-data-table__cell--non-numeric">Editar</th>
+	    			<th class="mdl-data-table__cell--non-numeric">Visualizar</th>
 	    			<th class="mdl-data-table__cell--non-numeric">Excluir</th>
 				</tr>
 			</thead>
@@ -29,13 +29,13 @@
 				<td th:text = ${vendas.DataVenda}></td>
 				<td th:text = ${vendas.ValorTotalVenda}></td>
 				<td>
-					<form action="/Produtos/Visualizar" method="get">
+					<form action="/Vendas/Visualizar" method="get">
 					  <input type="hidden" name="id" th:value="${vendas.CodigoVenda}" />					   			
 					  <button type="submit"  class="mdl-chip__action"><i class="material-icons">create</i></button>
 					</form>
 			    </td>
 				<td>
-					<form action="/Produtos/excluir" method="post">					   			 
+					<form action="/Vendas/excluir" method="post">					   			 
 					  <input type="hidden" name="id" th:value="${vendas.CodigoVenda}" />								 					   			 
 					  <button type="submit"><i class="material-icons">delete</i></button>
 					</form>

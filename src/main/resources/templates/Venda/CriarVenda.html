@@ -31,7 +31,7 @@
 					<label for="DataVenda" data-error="Preencha o campo CPF corretamente" class="active">Data da Venda</label>
 				</div>
 				<div class="input-field col s3">
-					<input type="text" class="validate" id="ValorTotalVenda" name="ValorTotalVenda" th:each = "valor : ${valorOrder}" th:value="${valor}" th:text="${valor}" required maxlength="14">
+					<input type="text" class="validate" id="ValorTotalVenda" name="ValorTotalVenda" th:each = "valor : ${valorOrder}" th:value="${valor}" required maxlength="14">
 					<label for="ValorTotalVenda" data-error="Preencha o campo Salario corretamente" class="active">Valor Total da Venda</label>
 				</div>
 			</div>
