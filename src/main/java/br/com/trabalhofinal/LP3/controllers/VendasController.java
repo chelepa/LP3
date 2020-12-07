@@ -21,13 +21,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.trabalhofinal.LP3.dto.Clientes.ClientesResponse;
 import br.com.trabalhofinal.LP3.dto.Funcionarios.FuncionariosResponseDTO;
-import br.com.trabalhofinal.LP3.dto.ItensVenda.CardResponseDTO;
+import br.com.trabalhofinal.LP3.dto.ItensVenda.CardItensResponse;
 import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosDTO;
-import br.com.trabalhofinal.LP3.dto.Vendas.ValorTotalOrderDTO;
+import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosResponseDTO;
+import br.com.trabalhofinal.LP3.dto.Vendas.VendaDTO;
+import br.com.trabalhofinal.LP3.dto.Vendas.VendaResponseDTO;
+import br.com.trabalhofinal.LP3.entities.VendaEntities;
 import br.com.trabalhofinal.LP3.services.ClientesService;
 import br.com.trabalhofinal.LP3.services.FuncionariosService;
 import br.com.trabalhofinal.LP3.services.ItensVendaService;
 import br.com.trabalhofinal.LP3.services.ProdutosService;
+import br.com.trabalhofinal.LP3.services.VendaService;
 
 
 @Controller
@@ -44,12 +48,15 @@ public class VendasController {
 	
 	@Autowired
 	private ItensVendaService itensVendaService;
+	
+	@Autowired
+	private VendaService service;
 
     @RequestMapping(value="/Vendas", method=RequestMethod.GET)
     public ModelAndView getAllProdutos(){
         ModelAndView mv = new ModelAndView("Venda/ListarVenda");
-//        List<ProdutosResponseDTO>  listprodutos = service.getAllProdutos();
-//        mv.addObject("produtos", listprodutos);
+        List<VendaResponseDTO>  listVendas = service.getAllVendas();
+        mv.addObject("vendas", listVendas);
         return mv;
     }
     
@@ -60,13 +67,14 @@ public class VendasController {
         mv.addObject("funcionarios", funcionarios);
         List<ClientesResponse>  clientes = cliService.getAllClientes();
         mv.addObject("clientes", clientes);
-        List<CardResponseDTO> teste = itensVendaService.getItensCart();
-        mv.addObject("itensCard", teste);
+        CardItensResponse teste = itensVendaService.getItensCart();
+        mv.addObject("itensCard", teste.getCardItens());
+        mv.addObject("valorOrder", teste.getValorOrder());
 		return mv;
 	}
 	
 	@PostMapping(value="/Vendas/Cadastro")
-	public String form(@Valid ProdutosDTO produtos, BindingResult result, RedirectAttributes attributes) throws ParseException{		
+	public String form(@Valid VendaDTO card, BindingResult result, RedirectAttributes attributes) throws ParseException{		
 		if(result.hasErrors()){
 			List<String> msg = new ArrayList<>();
 			for (ObjectError error : result.getAllErrors()) {
@@ -74,10 +82,10 @@ public class VendasController {
 			}
 			System.out.println(msg);
 			attributes.addFlashAttribute("mensagem", msg);
-			return "redirect:/Produtos/Cadastro";
+			return "redirect:/Vendas/Cadastro";
 		}
-//		service.create(produtos);
-		return "redirect:/Produtos";
+		service.create(card);
+		return "redirect:/Vendas";
 	}
 	
     @RequestMapping(value="/Vendas/excluir", method= RequestMethod.POST)

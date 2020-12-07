@@ -1,35 +1,23 @@
-package br.com.trabalhofinal.LP3.entities;
+package br.com.trabalhofinal.LP3.dto.Vendas;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
-@Table(name = "venda")
-public class VendaEntities {
+public class VendaResponseDTO {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "codigo_venda")
 	private Integer CodigoVenda;
 	
-	@Column(name = "codigo_func")
-	private Integer CodigoFunc;
+	private String CodigoFunc;
 	
-	@Column(name = "codigo_cli")
-	private Integer CodigoCli;
+	private String CodigoCli;
 
-	@Column(name = "data_venda")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate DataVenda;
 	
-	@Column(name = "valor_total_venda")
+	@DecimalMin("0.00")
 	private Double ValorTotalVenda;
 
 	public Integer getCodigoVenda() {
@@ -40,19 +28,19 @@ public class VendaEntities {
 		CodigoVenda = codigoVenda;
 	}
 
-	public Integer getCodigoFunc() {
+	public String getCodigoFunc() {
 		return CodigoFunc;
 	}
 
-	public void setCodigoFunc(Integer codigoFunc) {
+	public void setCodigoFunc(String codigoFunc) {
 		CodigoFunc = codigoFunc;
 	}
 
-	public Integer getCodigoCli() {
+	public String getCodigoCli() {
 		return CodigoCli;
 	}
 
-	public void setCodigoCli(Integer codigoCli) {
+	public void setCodigoCli(String codigoCli) {
 		CodigoCli = codigoCli;
 	}
 
@@ -71,4 +59,5 @@ public class VendaEntities {
 	public void setValorTotalVenda(Double valorTotalVenda) {
 		ValorTotalVenda = valorTotalVenda;
 	}
+	
 }

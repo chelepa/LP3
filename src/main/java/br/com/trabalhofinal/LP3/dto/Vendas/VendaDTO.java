@@ -1,35 +1,22 @@
-package br.com.trabalhofinal.LP3.entities;
+package br.com.trabalhofinal.LP3.dto.Vendas;
 
 import java.time.LocalDate;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
-@Table(name = "venda")
-public class VendaEntities {
+public class VendaDTO {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "codigo_venda")
 	private Integer CodigoVenda;
 	
-	@Column(name = "codigo_func")
 	private Integer CodigoFunc;
 	
-	@Column(name = "codigo_cli")
 	private Integer CodigoCli;
 
-	@Column(name = "data_venda")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate DataVenda;
 	
-	@Column(name = "valor_total_venda")
+	@DecimalMin("0.00")
 	private Double ValorTotalVenda;
 
 	public Integer getCodigoVenda() {

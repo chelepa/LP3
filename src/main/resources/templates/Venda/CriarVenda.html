@@ -12,7 +12,7 @@
 	
 
 	<div class="container">
-		<form id="CadCidades" action="/Funcionarios/Cadastro" method="post">
+		<form id="CadCidades" action="/Vendas/Cadastro" method="post">
 			<div class="row">
 				 <div class="input-field col s3">
 				    <select id="CodigoFunc" name="CodigoFunc" required>
@@ -27,12 +27,12 @@
 				    <label>Cliente</label>
 				 </div>
 				<div class="input-field col s3">
-					<input type="text" id="DataNFunc" name="DataNFunc" required maxlength="10">
-					<label for="DataNFunc" data-error="Preencha o campo CPF corretamente" class="active">Data da Venda</label>
+					<input type="text" id="DataVenda" name="DataVenda" required maxlength="10">
+					<label for="DataVenda" data-error="Preencha o campo CPF corretamente" class="active">Data da Venda</label>
 				</div>
 				<div class="input-field col s3">
-					<input type="text" id="SalarioFunc" class="validate" required maxlength="14"> 
-					<label for="SalarioFunc" data-error="Preencha o campo Salario corretamente" class="active">Valor Total da Venda</label>
+					<input type="text" class="validate" id="ValorTotalVenda" name="ValorTotalVenda" th:each = "valor : ${valorOrder}" th:value="${valor}" th:text="${valor}" required maxlength="14">
+					<label for="ValorTotalVenda" data-error="Preencha o campo Salario corretamente" class="active">Valor Total da Venda</label>
 				</div>
 			</div>
 			

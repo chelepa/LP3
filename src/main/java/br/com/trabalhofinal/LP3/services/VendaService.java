@@ -1,0 +1,76 @@
+package br.com.trabalhofinal.LP3.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.trabalhofinal.LP3.dto.Vendas.VendaDTO;
+import br.com.trabalhofinal.LP3.dto.Vendas.VendaResponseDTO;
+import br.com.trabalhofinal.LP3.entities.VendaEntities;
+import br.com.trabalhofinal.LP3.repositories.VendaRepository;
+
+@Service
+public class VendaService {
+
+	@Autowired
+	private VendaRepository repository;
+	
+	@Autowired
+	private ItensVendaService ItensService;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
+	private FuncionariosService funcService;
+	
+	@Autowired
+	private ClientesService cliService;
+	
+	public VendaDTO create(VendaDTO card) {
+		
+		VendaEntities entities = modelMapper.map(card, VendaEntities.class);
+		
+		VendaEntities responseEntities = repository.save(entities);
+		
+		VendaDTO response = modelMapper.map(responseEntities, VendaDTO.class);
+		
+		ItensService.createItensVenda(response.getCodigoVenda());
+		
+		return response;
+	}
+	
+	public List<VendaResponseDTO> getAllVendas() {
+		
+		List<VendaEntities> responseEntities = repository.findAll();
+		
+		List<VendaResponseDTO> response = populateNomesClientesFornecedores(responseEntities);
+		
+		return response;
+	}
+
+	private List<VendaResponseDTO> populateNomesClientesFornecedores(List<VendaEntities> responseEntities) {
+		List<VendaResponseDTO> list = new ArrayList<VendaResponseDTO>();
+		for (VendaEntities vendaResponseDTO : responseEntities) {
+			VendaResponseDTO response = new VendaResponseDTO();
+			response.setCodigoCli(getNomeCli(vendaResponseDTO.getCodigoCli()));
+			response.setCodigoFunc(getNomeFunc(vendaResponseDTO.getCodigoFunc()));
+			response.setCodigoVenda(vendaResponseDTO.getCodigoVenda());
+			response.setDataVenda(vendaResponseDTO.getDataVenda());
+			response.setValorTotalVenda(vendaResponseDTO.getValorTotalVenda());
+			list.add(response);
+		}
+		return list;
+	}
+
+	private String getNomeFunc(Integer codigoFunc) {
+		return funcService.getFuncionariosbyId(codigoFunc).getNomeFunc();
+	}
+
+	private String getNomeCli(Integer codigoCli) {
+		return cliService.getClientbyId(codigoCli).getNomeCli();
+	}
+}
