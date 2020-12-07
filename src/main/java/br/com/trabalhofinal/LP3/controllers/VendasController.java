@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.trabalhofinal.LP3.dto.Clientes.ClientesResponse;
 import br.com.trabalhofinal.LP3.dto.Funcionarios.FuncionariosResponseDTO;
 import br.com.trabalhofinal.LP3.dto.ItensVenda.CardItensResponse;
+import br.com.trabalhofinal.LP3.dto.ItensVenda.CardVallResponseDTO;
 import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosDTO;
 import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosResponseDTO;
 import br.com.trabalhofinal.LP3.dto.Vendas.VendaDTO;
@@ -95,27 +96,13 @@ public class VendasController {
 		return modelAndView;
     }
     
-//	@RequestMapping(value="/Vendas/editar", method= RequestMethod.GET)
-//	public ModelAndView editarCadastro(@RequestParam("id") Integer Id, Model model) {	
-//	    ModelAndView mv = new ModelAndView("Venda/EditarVenda");
-////	    ProdutosDTO produtos = service.getProdutosbyId(Id);
-////	    model.addAttribute("produtos", produtos);
-////		List<FornecedoresResponseDTO> listFornecedores = fornecedoresService.getAllFornecedores();
-////		mv.addObject("fornecedores", listFornecedores);
-//		return mv;
-//	 }
-//	
-//	@RequestMapping(value="/Vendas/editar", method= RequestMethod.POST)
-//	public String salvarAlteracao(@Valid ProdutosDTO produtos, BindingResult result, RedirectAttributes attributes) {
-//		if(result.hasErrors()){
-//			List<String> msg = new ArrayList<>();
-//			for (ObjectError error : result.getAllErrors()) {
-//				msg.add(error.getDefaultMessage());
-//			}
-//			attributes.addFlashAttribute("mensagem", msg);
-//			return "redirect:/Venda/EditarVenda";
-//		}
-////		service.atualizar(produtos);
-//		return "redirect:/Vendas";
-//	}
+	@RequestMapping(value="/Vendas/Visualizar", method= RequestMethod.GET)
+	public ModelAndView editarCadastro(@RequestParam("id") Integer Id, Model model) {	
+	    ModelAndView mv = new ModelAndView("Venda/EditarVenda");
+	    VendaResponseDTO vendas = service.getVendasById(Id);
+	    model.addAttribute("vendas", vendas);
+	    List<CardVallResponseDTO> teste = itensVendaService.getItensOrderValor(Id);
+		mv.addObject("listitensorder", teste);
+		return mv;
+	 }
 }

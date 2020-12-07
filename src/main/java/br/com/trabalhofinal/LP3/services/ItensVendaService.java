@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import br.com.trabalhofinal.LP3.dto.ItensVenda.CardItensResponse;
 import br.com.trabalhofinal.LP3.dto.ItensVenda.CardRequestDTO;
 import br.com.trabalhofinal.LP3.dto.ItensVenda.CardResponseDTO;
+import br.com.trabalhofinal.LP3.dto.ItensVenda.CardVallResponseDTO;
 import br.com.trabalhofinal.LP3.dto.ItensVenda.ItensVendaDTO;
 import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosDTO;
 import br.com.trabalhofinal.LP3.entities.ItensVendaEntities;
@@ -45,6 +46,23 @@ public class ItensVendaService {
 	
 	public List<ItensVendaEntities> getItensFromOrder(Integer Id) {
 		return repository.findByCodigoVenda(Id);
+	}
+	
+	public List<CardVallResponseDTO> getItensOrderValor(Integer Id) {
+		List<CardVallResponseDTO> list = new ArrayList<CardVallResponseDTO>();
+		List<ItensVendaEntities> listItens = getItensFromOrder(Id);
+				
+		for (ItensVendaEntities itensVendaEntities : listItens) {
+			ProdutosDTO produt = prdService.getProdutosbyId(itensVendaEntities.getCodigoProd());
+			CardVallResponseDTO response = new CardVallResponseDTO();
+			response.setIdproduto(itensVendaEntities.getCodigoProd());
+			response.setNomeProduto(produt.getNome());
+			response.setPreco(itensVendaEntities.getValorTotalIV());
+			response.setPrecounitario(produt.getPrecoUnitProd());
+			response.setQuantidade(itensVendaEntities.getQuantidadeIV());
+			list.add(response);
+		}
+		return list;
 	}
 	
 	public void deleteitensProductid(Integer Id) {

@@ -2,6 +2,7 @@ package br.com.trabalhofinal.LP3.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,17 @@ public class VendaService {
 		
 		List<VendaResponseDTO> response = populateNomesClientesFornecedores(responseEntities);
 		
+		return response;
+	}
+	
+	public VendaResponseDTO getVendasById(Integer id) {
+		Optional<VendaEntities> responseEntities = repository.findById(id);
+		VendaResponseDTO response = new VendaResponseDTO();
+		response.setCodigoVenda(responseEntities.get().getCodigoVenda());
+		response.setCodigoFunc(getNomeFunc(responseEntities.get().getCodigoFunc()));
+		response.setCodigoCli(getNomeCli(responseEntities.get().getCodigoCli()));
+		response.setDataVenda(responseEntities.get().getDataVenda());
+		response.setValorTotalVenda(responseEntities.get().getValorTotalVenda());
 		return response;
 	}
 	

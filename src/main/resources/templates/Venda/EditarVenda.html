@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Cadastro de Funcionarios</title>
+	<head th:replace="head :: head"></head>
+</head>
+<body>
+	<header th:replace="menu/Menu :: header"></header>
+	
+
+	<div class="container">
+		<form id="CadCidades" action="#" th:object="${vendas}">
+			<div class="row">
+				<div class="input-field col s3">
+					<input type="text" class="validate" id="CodigoVenda" th:field="*{CodigoVenda}" name="CodigoVenda" disabled="disabled">
+					<label for="CodigoVenda">Codigo da venda</label>
+				</div>
+				<div class="input-field col s3">
+					<input type="text" class="validate" id="CodigoFunc" th:field="*{CodigoFunc}" name="ValorTotalVenda" disabled="disabled">
+					<label for="CodigoFunc">Nome Do Funcionario</label>
+				</div>
+				<div class="input-field col s3">
+					<input type="text" class="validate" id="ValorTotalVenda" th:field="*{CodigoCli}" name="ValorTotalVenda" disabled="disabled">
+					<label for="ValorTotalVenda">Nome Do Cliente</label>
+				</div>
+				<div class="input-field col s3">
+					<input type="text" id="DataVenda" name="DataVenda" th:field="*{DataVenda}" disabled="disabled">
+					<label for="DataVenda" >Data da Venda</label>
+				</div>
+				<div class="input-field col s3">
+					<input type="text" class="validate" id="ValorTotalVenda" th:field="*{ValorTotalVenda}" name="ValorTotalVenda" disabled="disabled">
+					<label for="ValorTotalVenda">Valor Total da Venda</label>
+				</div>
+			</div>
+			
+			<table class="striped">
+				<thead>
+					<tr>
+						<th class="mdl-data-table__cell--non-numeric">Nome Do Produto</th>
+						<th class="mdl-data-table__cell--non-numeric">Quantidade</th>
+						<th class="mdl-data-table__cell--non-numeric">Preco Unitario</th>
+						<th class="mdl-data-table__cell--non-numeric">Preco</th>
+					</tr>
+				</thead>
+				<tr th:each = "item : ${listitensorder}">
+					<td th:text = ${item.nomeProduto}></td>
+					<td th:text = ${item.quantidade}></td>
+					<td th:text = ${item.precounitario}></td>
+					<td th:text = ${item.preco}></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+<div th:replace="footer :: footer"></div>
+</body>
+
+
+</html>
