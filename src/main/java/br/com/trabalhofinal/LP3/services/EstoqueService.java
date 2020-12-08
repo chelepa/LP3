@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import br.com.trabalhofinal.LP3.dto.Estoque.EstoqueDTO;
 import br.com.trabalhofinal.LP3.dto.Estoque.EstoqueResponseDTO;
 import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosDTO;
-import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosResponseDTO;
 import br.com.trabalhofinal.LP3.entities.EstoqueEntities;
 import br.com.trabalhofinal.LP3.repositories.EstoqueRepository;
 
@@ -68,6 +67,11 @@ public class EstoqueService {
 		EstoqueDTO Dto = modelMapper.map(response.get(), EstoqueDTO.class);
 		
 		return Dto;
+	}
+	
+	public void deleteEstoqueByProdutoId(Integer id) {
+		EstoqueEntities estoque = repository.findByProduto(id);
+		repository.deleteById(estoque.getCodigo());
 	}
 
 	private List<EstoqueResponseDTO> populateProduto(List<EstoqueEntities> response) {

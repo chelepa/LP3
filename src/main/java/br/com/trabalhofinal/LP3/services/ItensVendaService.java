@@ -42,6 +42,7 @@ public class ItensVendaService {
 			ItensVendaEntities entities = modelMapper.map(itensVenda, ItensVendaEntities.class);
 			repository.save(entities);
 		}
+		listCard.removeAll(listCard);
 	}
 	
 	public List<ItensVendaEntities> getItensFromOrder(Integer Id) {
@@ -62,6 +63,7 @@ public class ItensVendaService {
 			response.setQuantidade(itensVendaEntities.getQuantidadeIV());
 			list.add(response);
 		}
+		
 		return list;
 	}
 	

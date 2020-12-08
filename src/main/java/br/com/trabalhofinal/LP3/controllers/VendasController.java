@@ -38,9 +38,6 @@ import br.com.trabalhofinal.LP3.services.VendaService;
 
 @Controller
 public class VendasController {
-		
-	@Autowired
-	private ProdutosService prdService;
 	
 	@Autowired
 	private FuncionariosService FuncService;

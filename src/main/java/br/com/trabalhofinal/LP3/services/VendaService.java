@@ -8,7 +8,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.trabalhofinal.LP3.dto.Vendas.VendaDTO;
 import br.com.trabalhofinal.LP3.dto.Vendas.VendaRequestDTO;
 import br.com.trabalhofinal.LP3.dto.Vendas.VendaResponseDTO;
 import br.com.trabalhofinal.LP3.entities.VendaEntities;

@@ -39,7 +39,7 @@ public class ProdutosService {
 	}
 	
 	public void deletarProdutos(Integer id) {
-		// tem que deletar o estoque do produto tambem
+		estoqueService.deleteEstoqueByProdutoId(id);
 		repository.deleteById(id);
 	}
 	
