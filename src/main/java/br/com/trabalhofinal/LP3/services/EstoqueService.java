@@ -69,6 +69,11 @@ public class EstoqueService {
 		return Dto;
 	}
 	
+	public EstoqueEntities getFindByEstoqueByProdutoId(Integer id) {
+		EstoqueEntities estoque = repository.findByProduto(id);
+		return estoque;
+	}
+	
 	public void deleteEstoqueByProdutoId(Integer id) {
 		EstoqueEntities estoque = repository.findByProduto(id);
 		repository.deleteById(estoque.getCodigo());

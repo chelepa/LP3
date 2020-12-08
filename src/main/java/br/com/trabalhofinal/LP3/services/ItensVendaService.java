@@ -7,12 +7,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.trabalhofinal.LP3.dto.Estoque.EstoqueDTO;
 import br.com.trabalhofinal.LP3.dto.ItensVenda.CardItensResponse;
 import br.com.trabalhofinal.LP3.dto.ItensVenda.CardRequestDTO;
 import br.com.trabalhofinal.LP3.dto.ItensVenda.CardResponseDTO;
 import br.com.trabalhofinal.LP3.dto.ItensVenda.CardVallResponseDTO;
 import br.com.trabalhofinal.LP3.dto.ItensVenda.ItensVendaDTO;
 import br.com.trabalhofinal.LP3.dto.Produtos.ProdutosDTO;
+import br.com.trabalhofinal.LP3.entities.EstoqueEntities;
 import br.com.trabalhofinal.LP3.entities.ItensVendaEntities;
 import br.com.trabalhofinal.LP3.repositories.ItensVendaRepository;
 
@@ -21,6 +23,9 @@ public class ItensVendaService {
 	
 	@Autowired
 	private ProdutosService prdService;
+	
+	@Autowired
+	private EstoqueService estoqueService;
 	
 	@Autowired
 	private ItensVendaRepository repository;
@@ -41,10 +46,20 @@ public class ItensVendaService {
 			
 			ItensVendaEntities entities = modelMapper.map(itensVenda, ItensVendaEntities.class);
 			repository.save(entities);
+			
+			atualizarEstoque(entities);
 		}
 		listCard.removeAll(listCard);
 	}
 	
+	private void atualizarEstoque(ItensVendaEntities entities) {
+		EstoqueEntities estoque = estoqueService.getFindByEstoqueByProdutoId(entities.getCodigoProd());
+		Integer QuantEstoque = estoque.getQuantidade() - entities.getQuantidadeIV();
+		estoque.setQuantidade(QuantEstoque);
+		EstoqueDTO Dto = modelMapper.map(estoque, EstoqueDTO.class);
+		estoqueService.update(Dto);
+	}
+
 	public List<ItensVendaEntities> getItensFromOrder(Integer Id) {
 		return repository.findByCodigoVenda(Id);
 	}
